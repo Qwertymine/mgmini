@@ -8,6 +8,7 @@ local function scale_noise(noise,scale)
 	and noise.dims == 2 then
 		s.y = s.y / scale.z
 		noise.scale = noise.scale / scale.y
+		noise.offset = noise.offset / scale.y
 	else
 		s.y = s.y / scale.y
 	end
@@ -51,7 +52,7 @@ local function minify_function(func,scale)
 		or nscale.y < 1
 		or nscale.z < 1 then
 			if snoise.lacunarity > 1
-			and snoise.occtaves > 1 then
+			and snoise.octaves > 1 then
 				snoise.octaves = 1
 				nscale = smallest_octave_scale(snoise)
 				if nscale.x < 1
