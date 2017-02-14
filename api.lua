@@ -4,14 +4,17 @@ local function scale_noise(noise,scale)
 	s.x = s.x / scale.x
 	s.z = s.z / scale.z
 
-	if noise.dims
-	and noise.dims == 2 then
+	if (noise.dims and noise.dims == 2) then
 		s.y = s.y / scale.z
-		noise.scale = noise.scale / scale.y
-		noise.offset = noise.offset / scale.y
 	else
 		s.y = s.y / scale.y
 	end
+
+	if (dims == 2 and noise.mgmini_scale_values ~= false)
+	or (dims == 3 and noise.mgmini_scale_values) then
+		noise.scale = noise.scale / scale.y
+		noise.offset = noise.offset / scale.y
+	else
 
 	return noise
 end

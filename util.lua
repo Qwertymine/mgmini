@@ -10,6 +10,7 @@ mgmini.zero_noise = {
 }
 
 mgmini.ave_val_def = function(value)
+	minetest.log("error", "Average value noise used")
 	local noise = table.copy(mgmini.zero_noise)
 	noise.offset = value
 	return noise
